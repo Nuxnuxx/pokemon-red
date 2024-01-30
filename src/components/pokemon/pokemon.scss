@@ -21,12 +21,7 @@
 	.info-wrapper-health-wrapper {
 		display: flex;
 		flex-direction: row;
-		justify-content: center;
 		align-items: center;
-
-		.info-wrapper-health-text {
-			width: 30%;
-		}
 
 		.info-wrapper-health-bar {
 			background-color: green;
@@ -35,5 +30,16 @@
 			border: 2.5px solid black;
 			border-radius: 25px;
 		}
+	}
+}
+
+.image-wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	img {
+		width: 70%;
+		image-rendering: pixelated;
 	}
 }

@@ -1,43 +1,39 @@
 /// <reference types="vite/client" />
-enum Type {
-  normal = "normal",
-  fire = "fire",
-  water = "water",
-  electric = "electric",
-  grass = "grass",
-  ice = "ice",
-  fighting = "fighting",
-  poison = "poison",
-  ground = "ground",
-  flying = "flying",
-  psychic = "psychic",
-  bug = "bug",
-  rock = "rock",
-  ghost = "ghost",
-  dragon = "dragon",
-}
-
-type PokemonType = {
-  type: type;
-};
-
-type Ability = {
-  name: string;
-  pp: number;
-  id: number;
-  power: number;
-  type: type;
-};
-
 type Pokemon = {
   name: string;
-  types: pokemonType[];
+  image: string;
+  atk: number;
+  def: number;
   hp: number;
-  attack: number;
-	defense: number; 
-	specDefense: number;
-  special: number;
-  ability: ability[];
-  weight?: number;
-  level: number;
+  speed: number;
+  types: string[];
+  lvl: number;
+  special: string;
+  moves: Move[];
+  isEnnemy?: boolean;
+};
+
+type Type = {
+  name: string;
+  color: string;
+  weakness: string[];
+  imuunities: string[];
+  category: string;
+};
+
+type Move = {
+  name: string;
+  type: string;
+  power: number;
+  accuracy: number;
+  pp: number;
+};
+
+type Battle = {
+  player: Pokemon;
+  ennemy: Pokemon;
+  playerTurn: boolean;
+  battleLog?: string[];
+  isOver?: boolean = false;
+  winner?: Pokemon | null;
 };
