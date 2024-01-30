@@ -1,0 +1,33 @@
+.controls-wrapper {
+	padding-left: 30%;
+	height: 10rem;
+	border: 2.5px solid black;
+	border-top: none;
+	border-right: none;
+	background-color: white;
+
+	.controls-wrapper-menu {
+		border: 2.5px solid black;
+		border-top: none;
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		grid-template-rows: repeat(2, 1fr);
+		margin-left: auto;
+		justify-items: center;
+		height: inherit;
+		width: 100%;
+
+		button {
+			all: unset;
+			cursor: pointer;
+			width: 100%;
+			font-size: 1rem;
+			text-align: center;
+			&:hover:before {
+				content: '>';
+				font-size: 1rem;
+				margin-right: 1rem;
+			}
+		}
+	}
+}

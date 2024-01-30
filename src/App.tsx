@@ -1,7 +1,14 @@
+import "./app.scss";
+import Controls from "./components/controls/Controls";
+import GamePlay from "./components/gameplay/GamePlay";
+
 function App() {
   return (
-		<div>Pokemon Red</div>
-  )
+    <>
+      <GamePlay />
+      <Controls />
+    </>
+  );
 }
 
-export default App
+export default App;

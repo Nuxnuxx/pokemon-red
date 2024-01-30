@@ -1,0 +1,21 @@
+* {
+	position: relative;
+	box-sizing: border-box;
+}
+
+@font-face {
+	font-family: "pokemon";
+	src: url("assets/pokemon_generation_1.ttf");
+}
+
+html {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	font-family: "pokemon";
+	background-color: black;
+	width: 70%;
+	margin: 0 auto;
+}
+
