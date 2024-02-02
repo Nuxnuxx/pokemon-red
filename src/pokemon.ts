@@ -80,5 +80,28 @@ export const ennemyPokemon: Pokemon = {
 			pp: 25,
 		},
 	],
-	isEnnemy: true
+	isEnnemy: true,
+};
+
+export const calculateDamage = (
+	attacker: Pokemon,
+	defender: Pokemon,
+	move: Move,
+): number => {
+	// Calculate base damage
+	const baseDamage =
+		(((2 * attacker.lvl) / 5 + 2) *
+			move.power *
+			(attacker.atk / defender.def)) /
+		50 +
+		2;
+
+	// Apply modifiers (STAB, type effectiveness)
+	const stab = attacker.types[0] === move.type ? 1.5 : 1;
+	const effectiveness = 1;
+
+	// Calculate final damage
+	const finalDamage = baseDamage * stab * effectiveness;
+
+	return finalDamage;
 };
