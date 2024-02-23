@@ -6,38 +6,37 @@ import Controls from "./components/controls/Controls";
 
 function App() {
 	const [battleState, setBattleState] = useState<Battle>({
-		player: playerPokemon,
-		ennemy: ennemyPokemon,
 		playerTurn: playerPokemon.speed >= ennemyPokemon.speed,
 		battleLog: [],
 		isOver: false,
 	});
 
+	const [player, setPlayer] = useState<Pokemon>(playerPokemon);
+	const [ennemy, setEnnemy] = useState<Pokemon>(ennemyPokemon);
+
 	useEffect(() => {
-		if (!battleState.playerTurn && !battleState.isOver) {
+		// If it's the ennemy's turn, it attacks the player
+		if (!battleState.playerTurn) {
 			const attack =
-				battleState.ennemy.moves[
-				Math.floor(Math.random() * battleState.ennemy.moves.length)
-				];
+				ennemy.moves[Math.floor(Math.random() * ennemy.moves.length)];
+
 			setBattleState((prev: Battle) => ({
 				...prev,
 				playerTurn: true,
-				player: {
-					...prev.player,
-					hp:
-						prev.player.hp - calculateDamage(prev.ennemy, prev.player, attack),
-				},
+			}));
+
+			setPlayer((prev: Pokemon) => ({
+				...prev,
+				hp: prev.hp - calculateDamage(ennemy, player, attack),
 			}));
 		}
 
-		if (
-			(battleState.player.hp <= 0 || battleState.ennemy.hp <= 0) &&
-			!battleState.isOver
-		) {
+		// If the player or the ennemy has no more hp, the battle is over
+		if ((player.hp <= 0 || ennemy.hp <= 0) && !battleState.isOver) {
 			setBattleState((prev: Battle) => ({
 				...prev,
 				isOver: true,
-				winner: prev.player.hp > 0 ? prev.player : prev.ennemy,
+				winner: player.hp > 0 ? player : ennemy,
 			}));
 		}
 	}, [battleState]);
@@ -49,18 +48,10 @@ function App() {
 					{battleState.winner ? battleState.winner.name : null} won the battle
 				</>
 			) : (
-				<>
-					<BattleArena
-						player={battleState.player}
-						ennemy={battleState.ennemy}
-					/>
-					<Controls
-						setBattleState={setBattleState}
-						calculateDamage={calculateDamage}
-						isPlayerTurn={battleState.playerTurn}
-						playerMoves={playerPokemon.moves}
-					/>
-				</>
+        <>
+          <BattleArena player={player} ennemy={ennemy} />
+					<Controls playerMoves={player.moves} isPlayerTurn={battleState.playerTurn} />
+        </>
 			)}
 		</>
 	);

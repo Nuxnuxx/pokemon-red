@@ -24,14 +24,12 @@ type Type = {
 type Move = {
     name: string;
     type: string;
-    power: number;
+    atk: number;
     accuracy: number;
     pp: number;
 };
 
 type Battle = {
-    player: Pokemon;
-    ennemy: Pokemon;
     playerTurn: boolean;
     battleLog?: string[];
     isOver?: boolean = false;
