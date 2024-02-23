@@ -7,10 +7,15 @@ interface ControlsProps {
 }
 
 function Controls({ playerMoves, isPlayerTurn, setPlayerMove }: ControlsProps) {
+
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+		// Get the name of the attack
     const attackName = e.currentTarget.innerHTML.split("<div>")[0];
+
+		// Get the Move by the name of the attack
     const attack = playerMoves.find((move) => move.name === attackName);
 
+		// If it exist we send it to the App components with the setter
     if (attack) {
 			setPlayerMove(attack)
     }

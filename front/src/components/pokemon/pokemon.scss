@@ -2,8 +2,8 @@
 	display: flex;
 	flex-direction: column;
 	text-align: center;
-	width: 70%;
-	padding: 0 2rem;
+	width: 100%;
+	padding: 2rem 2rem;
 	justify-self: center;
 	font-weight: bold;
 
@@ -12,6 +12,7 @@
 		line-height: 0;
 		margin-inline-end: 2rem;
 		font-weight: normal;
+		margin: 0 auto;
 	}
 
 	.info-wrapper-level {
@@ -20,15 +21,28 @@
 
 	.info-wrapper-health-wrapper {
 		display: flex;
-		flex-direction: row;
+		flex-direction: column;
 		align-items: center;
 
 		.info-wrapper-health-bar {
-			background-color: green;
-			width: 70%;
-			height: 50%;
+			--hpbar: 100%;
+			width: 100%;
+			height: 1.5rem;
+			background-color: transparent;
 			border: 2.5px solid black;
-			border-radius: 25px;
+				border-radius: 25px;
+
+			&:after {
+				content: "";
+				display: block;
+				height: 100%;
+				border-radius: inherit;
+				width: var(--hpbar);
+				background-color: green;
+				top: 0;
+				left: 0;
+				transition: 300ms ease-in-out;
+			}
 		}
 	}
 }
