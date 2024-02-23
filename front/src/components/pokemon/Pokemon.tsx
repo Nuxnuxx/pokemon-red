@@ -2,11 +2,13 @@ import "./pokemon.scss";
 import { useState } from "react";
 
 function Pokemon({ name, lvl, hp, image, isEnnemy = false }: Partial<Pokemon>) {
+
 	if (hp === undefined) {
 		return <div>undefined</div>;
 	}
+
 	const baseHp = Math.floor(hp);
-	const [currentHp, setCurrentHp] = useState(Math.floor(hp));
+	const [currentHp, _] = useState(Math.floor(hp));
 
 	return (
 		<>

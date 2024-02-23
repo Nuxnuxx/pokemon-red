@@ -1,7 +1,7 @@
 export const playerPokemon: Pokemon = {
   name: "Pikachu",
   lvl: 10,
-  hp: 35,
+  hp: 300,
   image: "https://img.pokemondb.net/sprites/red-blue/normal/pikachu.png",
   types: ["electric"],
   special: "thunderbolt",
@@ -43,7 +43,7 @@ export const playerPokemon: Pokemon = {
 export const ennemyPokemon: Pokemon = {
   name: "Bulbasaur",
   lvl: 10,
-  hp: 45,
+  hp: 400,
   image: "https://img.pokemondb.net/sprites/red-blue/normal/bulbasaur.png",
   types: ["grass", "poison"],
   special: "vine whip",
@@ -105,5 +105,6 @@ export function calculateDamage(
       effectiveness *
       modifier,
   );
+
   return damage;
 }
